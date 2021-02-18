@@ -6,11 +6,24 @@ const btnStart = document.getElementById('btnEmpezar');
 class Game {
 	constructor() {
 		this.inicializar();
+		this.generarSecuencia();
 	}
 	inicializar() {
 		btnStart.classList.add('hide');
+		this.level = 1;
+		this.colors = {
+			blue,
+			violet,
+			orange,
+			green,
+		};
+	}
+	generarSecuencia() {
+		this.secuencia = new Array(10)
+			.fill(0)
+			.map((n) => Math.floor(Math.random() * 4));
 	}
 }
-const startGame = () => {
-	const game = new Game();
-};
+function startGame() {
+	window.game = new Game();
+}
