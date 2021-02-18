@@ -1,19 +1,16 @@
-const celeste = document.getElementById('celeste');
-const violeta = document.getElementById('violeta');
-const naranja = document.getElementById('naranja');
-const verde = document.getElementById('verde');
-const btnEmpezar = document.getElementById('btnEmpezar');
-
-class Juego {
+const blue = document.getElementById('celeste');
+const violet = document.getElementById('violeta');
+const orange = document.getElementById('naranja');
+const green = document.getElementById('verde');
+const btnStart = document.getElementById('btnEmpezar');
+class Game {
 	constructor() {
 		this.inicializar();
 	}
-
 	inicializar() {
-		btnEmpezar.classList.add('hide');
+		btnStart.classList.add('hide');
 	}
 }
-
-function empezarJuego() {
-	var juego = new Juego();
-}
+const startGame = () => {
+	const game = new Game();
+};

@@ -71,7 +71,8 @@ body {
 	position: absolute;
 	top: calc(50% - 50px);
 	left: calc(50% - 200px);
-    border: none;
+    border: 1px solid #2c3e50;
+    outline: none;
 }
 
 .hide {
