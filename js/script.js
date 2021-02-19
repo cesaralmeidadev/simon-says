@@ -6,6 +6,7 @@ const btnStart = document.getElementById('btnEmpezar');
 const ULTIMO_NIVEL = 10;
 class Game {
 	constructor() {
+		this.inicializar = this.inicializar.bind(this);
 		this.inicializar();
 		this.generarSecuencia();
 		setTimeout(this.nextLevel(), 500);
@@ -13,7 +14,7 @@ class Game {
 	inicializar() {
 		this.nextLevel = this.nextLevel.bind(this);
 		this.elegirColor = this.elegirColor.bind(this);
-		btnStart.classList.add('hide');
+		this.toggleBtnStart();
 		this.level = 1;
 		this.colores = {
 			celeste,
@@ -21,6 +22,13 @@ class Game {
 			naranja,
 			verde,
 		};
+	}
+	toggleBtnStart() {
+		if (btnStart.classList.contains('hide')) {
+			btnStart.classList.remove('hide');
+		} else {
+			btnStart.classList.add('hide');
+		}
 	}
 	generarSecuencia() {
 		this.secuencia = new Array(ULTIMO_NIVEL)
@@ -91,14 +99,23 @@ class Game {
 				this.level++;
 				this.eliminarEventosClick();
 				if (this.level === ULTIMO_NIVEL + 1) {
-					//Gano
+					this.ganoElJuego();
 				} else {
 					setTimeout(this.nextLevel, 1500);
 				}
 			}
 		} else {
-			// perdio
+			this.perdioElJuego();
 		}
+	}
+	ganoElJuego() {
+		swal('Felicidades', 'Ganaste', 'success').then(this.inicializar);
+	}
+	perdioElJuego() {
+		swal('Vaya', 'Perdiste', 'error').then(() => {
+			this.eliminarEventosClick();
+			this.inicializar();
+		});
 	}
 }
 function startGame() {
